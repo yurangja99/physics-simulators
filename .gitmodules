@@ -1,0 +1,6 @@
+[submodule "OmniIsaacGymEnvs"]
+	path = OmniIsaacGymEnvs
+	url = https://github.com/NVIDIA-Omniverse/OmniIsaacGymEnvs.git
+[submodule "rl_games"]
+  path = rl_games
+  url = https://github.com/Denys88/rl_games.git
