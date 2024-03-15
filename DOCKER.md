@@ -40,10 +40,10 @@ Initialize the container with the following scripts:
 apt update -y 
 apt install -y sudo 
 # install basic packages and python3
-sudo apt install -y curl wget nano git x11-apps 
+sudo apt install -y curl wget nano git gcc x11-apps 
 # clone physics-simulators
 cd /workspace
-git clone https://github.com/yurangja99/physics-simulators.git
+git clone --recurse-submodules https://github.com/yurangja99/physics-simulators.git
 ################################################
 # install OmniIsaacGymEnvs
 cd /workspace/physics-simulators/OmniIsaacGymEnvs
@@ -57,7 +57,7 @@ echo "export PATH=/usr/local/cuda-11.8/bin:${PATH}" >> ~/.bashrc
 echo "export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:${LD_LIBRARY_PATH}" >> ~/.bashrc
 source ~/.bashrc
 nvcc -V # to check cuda
-# install cudnn
+# install cudnn (nvidia login needed!)
 wget https://developer.nvidia.com/downloads/compute/cudnn/secure/8.9.7/local_installers/11.x/cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz/
 sudo tar -xvf cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz
 sudo cp cudnn-*-archive/include/cudnn*.h /usr/local/cuda/include
@@ -82,7 +82,7 @@ cd /workspace/physics-simulators/rl_games
 poetry lock
 poetry install
 # install torch and jaxlib
-poetry run pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117 --default-timeout=1000
+poetry run pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 --default-timeout=1000
 poetry run pip install -U "jax[cuda]==0.4.25" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
