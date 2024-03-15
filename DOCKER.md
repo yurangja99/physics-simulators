@@ -13,27 +13,27 @@ Run the Isaac Sim docker with x11 settings.
 ```bash
 xhost +
 docker run -dit \
-  --gpus '"device=0"' \ # all or '"device=N"'
-  --name phys-sims \
-  --network=host \
-  --ipc=host \
-  -e "ACCEPT_EULA=Y" \
-  -e "PRIVACY_CONSENT=Y" \
-  -e DISPLAY=$DISPLAY \
-  -e USER=$USER \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
-  -v $HOME/.Xauthority:/root/.Xauthority:rw \
-  -v ~/.mujoco:~/.mujoco \
-  -v ~/docker/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw \
-  -v ~/docker/isaac-sim/cache/ov:/root/.cache/ov:rw \
-  -v ~/docker/isaac-sim/cache/pip:/root/.cache/pip:rw \
-  -v ~/docker/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw \
-  -v ~/docker/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw \
-  -v ~/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw \
-  -v ~/docker/isaac-sim/data:/root/.local/share/ov/data:rw \
-  -v ~/docker/isaac-sim/documents:/root/Documents:rw \
-  -w /workspace \
-  nvcr.io/nvidia/isaac-sim:2023.1.1
+--gpus '"device=0"' \ 
+--name phys-sims \
+--network=host \
+--ipc=host \
+-e "ACCEPT_EULA=Y" \
+-e "PRIVACY_CONSENT=Y" \
+-e DISPLAY=$DISPLAY \
+-e USER=$USER \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-v $HOME/.Xauthority:/root/.Xauthority:rw \
+-v ~/.mujoco:/root/.mujoco \
+-v ~/docker/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw \
+-v ~/docker/isaac-sim/cache/ov:/root/.cache/ov:rw \
+-v ~/docker/isaac-sim/cache/pip:/root/.cache/pip:rw \
+-v ~/docker/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw \
+-v ~/docker/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw \
+-v ~/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw \
+-v ~/docker/isaac-sim/data:/root/.local/share/ov/data:rw \
+-v ~/docker/isaac-sim/documents:/root/Documents:rw \
+-w /workspace \
+nvcr.io/nvidia/isaac-sim:2023.1.1
 ```
 
 Initialize the container with the following scripts:
