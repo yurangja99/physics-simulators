@@ -12,11 +12,7 @@ Run the Isaac Sim docker with x11 settings.
 
 ```bash
 xhost +
-docker run -dit \
---gpus '"device=0"' \ 
---name phys-sims \
---network=host \
---ipc=host \
+docker run -dit --gpus '"device=0"' --name phys-sims --network=host --ipc=host \
 -e "ACCEPT_EULA=Y" \
 -e "PRIVACY_CONSENT=Y" \
 -e DISPLAY=$DISPLAY \
