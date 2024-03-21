@@ -94,17 +94,21 @@ You can try some demos:
 # training isaac sim 
 cd /workspace/physics-simulators/OmniIsaacGymEnvs/omniisaacgymenvs
 sudo /isaac-sim/python.sh scripts/rlgames_train.py task=Humanoid
-sudo /isaac-sim/python.sh scripts/rlgames_train.py task=ShadowHand headless=True
+# sudo /isaac-sim/python.sh scripts/rlgames_train.py task=ShadowHand headless=True
+sudo /isaac-sim/python.sh scripts/rlgames_train.py task=Humanoid num_envs=64 checkpoint=runs/[PATH]/nn/Humanoid.pth
 
 # training mujoco
 cd /workspace/physics-simulators/rl_games
 poetry run python runner.py --train --file rl_games/configs/mujoco/humanoid.yaml
+poetry run python runner.py --play --file rl_games/configs/mujoco/humanoid.yaml --checkpoint runs/[PATH]/nn/Humanoid-v4_ray.pth
 
 # training mujoco envpool
 cd /workspace/physics-simulators/rl_games
 poetry run python runner.py --train --file rl_games/configs/mujoco/humanoid_envpool.yaml
+poetry run python runner.py --play --file rl_games/configs/mujoco/humanoid_envpool.yaml --checkpoint runs/[PATH]/nn/Humanoid-v4_envpool.pth
 
 # training brax
 cd /workspace/physics-simulators/rl_games
 poetry run python runner.py --train --file rl_games/configs/brax/ppo_humanoid.yaml
+poetry run python runner.py --play --file rl_games/configs/brax/ppo_humanoid.yaml --checkpoint runs/[PATH]/nn/Humanoid_brax.pth
 ```
