@@ -16,9 +16,25 @@ How to run this repository is described in [`DOCKER.md`](./DOCKER.md).
 ## Trained checkpoints
 Simple MLP policies are trained by PPO algorithm for `Humanoid` environment provided by (1) MuJoco, (2) MuJoCo envpool, (3) brax, and (4) Isaac Sim. 
 
-Each agent is trained 2000 iters for 1 hours (brax) to 33 hours (mujoco gym). 
+Each agent is trained 2000 iterations using RTX 3090 GPU. 
+Each agent has trained different number of steps on another, so we have to consider it when comparing them. 
 
-![](./results/Humanoid/learning_curve.png)
+![](./results/Humanoid/learning_curve_iter.png)
+
+The graph shows the learning curve of four agents. 
+It seems that envpool, brax, and isaac sim took same time to be trained, but see another graph below. 
+
+![](./results/Humanoid/learning_curve_step.png)
+
+Envpool, brax, and isaac sim took similar time, but they are trained significantly different steps. 
+Normalized time to be trained 100M steps are calculated as below. 
+Brax performs the best, isaac sim is second, then envpool is third. 
+
+||mujoco|envpool|brax|isaac-sim|
+|-|-|-|-|-|
+|time to train 2000 iters (num of steps)|158 min|40 min|13.5 min|43 min|
+|time to train 100M steps|964.6 min|244.2 min|10.3 min|16.4 min|
+|speedup from mujoco|1.0|3.95|93.65|58.8|
 
 You can run trained checkpoints for each simulator, but first you have to set environment following the [instruction](#start-using-docker). 
 
